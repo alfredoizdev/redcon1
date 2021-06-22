@@ -12,6 +12,7 @@ $theme-colors: (
 @import "components/field";
 @import "components/button";
 @import "configs/text";
+@import "components/loading";
 
 .no-expand {
   display: none;
