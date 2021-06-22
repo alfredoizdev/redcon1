@@ -6,11 +6,11 @@ import SlideImg from "./SlideImg";
 import SelectField from "components/form/SelectField";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSlidersH } from "@fortawesome/free-solid-svg-icons";
+import { faSlidersH, faTimes } from "@fortawesome/free-solid-svg-icons";
 const Product = ({ item }) => {
   const [show, setShow] = useState(false);
 
-  const handleMouse = () => {
+  const handleClick = () => {
     if (!show) {
       setShow(true);
     } else {
@@ -32,7 +32,7 @@ const Product = ({ item }) => {
             className={`component_btn-variant ${
               show ? "no-show" : ""
             } shadow-sm`}
-            onClick={handleMouse}
+            onClick={handleClick}
           >
             <FontAwesomeIcon icon={faSlidersH} />
           </Button>
@@ -43,11 +43,11 @@ const Product = ({ item }) => {
           >
             <SelectField variants={item.variants} />
             <Button
-              variant='primary'
-              onClick={handleMouse}
+              variant='danger'
+              onClick={handleClick}
               className='component_btn-variant-close'
             >
-              X
+              <FontAwesomeIcon icon={faTimes} />
             </Button>
           </div>
         </div>
