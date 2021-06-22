@@ -20,3 +20,9 @@ $theme-colors: (
 .expand {
   display: block;
 }
+
+.carousel-indicators {
+  li.active {
+    background-color: $primary;
+  }
+}

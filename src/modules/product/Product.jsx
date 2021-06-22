@@ -1,67 +1,57 @@
-import SelectField from "components/form/SelectField";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 import CardItem from "./CardItem";
 import PropTypes from "prop-types";
 import CardQty from "./CardQty";
-
+import SlideImg from "./SlideImg";
+import SelectField from "components/form/SelectField";
+import Button from "react-bootstrap/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSlidersH } from "@fortawesome/free-solid-svg-icons";
 const Product = ({ item }) => {
+  const [show, setShow] = useState(false);
+
+  const handleMouse = () => {
+    if (!show) {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
+  };
+
   return (
     <div className='col-md-4'>
       <div className='component_card'>
         <div className='component_card-img-wrap'>
-          {/* <img src={item.image} className='card-img-top' alt={item.handle} /> */}
-          <div
-            id='carouselExampleInterval'
-            className='carousel slide'
-            data-bs-ride='carousel'
+          {item.images?.length ? (
+            <SlideImg images={item.images} mainImg={item.image} />
+          ) : (
+            <img src={item.image} className='card-img-top' alt={item.handle} />
+          )}
+          <Button
+            variant='light'
+            className={`component_btn-variant ${show ? "no-show" : ""} shadow-sm`}
+            onClick={handleMouse}
           >
-            <div className='carousel-inner'>
-              <div className='carousel-item active' data-bs-interval='10000'>
-                <img src={item.image} className='d-block w-100' alt='...' />
-              </div>
-              <div className='carousel-item active' data-bs-interval='2000'>
-                <img src={item.image} className='d-block w-100' alt='...' />
-              </div>
-            </div>
-            <button
-              className='carousel-control-prev'
-              type='button'
-              data-bs-target='#carouselExampleInterval'
-              data-bs-slide='prev'
-            >
-              <span
-                className='carousel-control-prev-icon'
-                aria-hidden='true'
-              ></span>
-              <span className='visually-hidden'>Previous</span>
-            </button>
-            <button
-              className='carousel-control-next'
-              type='button'
-              data-bs-target='#carouselExampleInterval'
-              data-bs-slide='next'
-            >
-              <span
-                className='carousel-control-next-icon'
-                aria-hidden='true'
-              ></span>
-              <span className='visually-hidden'>Next</span>
-            </button>
+            <FontAwesomeIcon icon={faSlidersH} />
+          </Button>
+          <div className={`component_field-wrap ${!show && "no-show"} shadow-sm`}>
+            <SelectField variants={item.variants} />
+            <Button
+            variant='primary'
+            onClick={handleMouse}
+            className="component_btn-variant-close"
+          >
+            X
+          </Button>
           </div>
         </div>
         <div className='component_card-body'>
-          <h5 className='card-title text-uppercase text_header-text'>
-            {item.title}
-          </h5>
+          <h5 className='card-title text_header-text'>{item.title}</h5>
           <p className='component_card-price'>${item.variants[0].price}</p>
-          <div className='pt-2'>
-            <SelectField variants={item.variants} />
-          </div>
           <div className='d-flex justify-content-between pt-3 pb-2'>
             <CardQty />
             <button className='btn btn-primary component_btn'>
-              <FontAwesomeIcon icon={faShoppingCart} size='lg' />
+              Add to cart
             </button>
           </div>
           <div className='pt-3'>
