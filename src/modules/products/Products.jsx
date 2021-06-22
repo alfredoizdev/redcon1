@@ -1,18 +1,11 @@
-import { useEffect } from "react";
 import Product from "modules/product/Product";
 import useRequest from "hooks/useRequest";
 import Loading from "components/loading/loading";
 
 const Products = () => {
-  const { items, error, loading } = useRequest({
+  const { items, loading } = useRequest({
     requet: "applicant/2021/products.php",
   });
-
-  useEffect(() => {
-    if (items) {
-      console.log(items);
-    }
-  }, [items]);
 
   return (
     <div className='row mt-4'>
