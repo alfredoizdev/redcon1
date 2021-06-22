@@ -1,0 +1,35 @@
+.component_card {
+  margin: 5px;
+  margin: 10px 0px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.component_card-img-wrap {
+  background: $grey-lite;
+  width: 100%;
+}
+
+.component_list-card-item {
+  padding: 10px 5px;
+  border-top: 1px dotted $grey-lite;
+  p {
+    font-size: 13px;
+  }
+}
+
+.component_card-body {
+  flex: 1 1 auto;
+  padding: 2rem 0rem;
+}
+
+.component_card-meta {
+}
+
+.component_card-price {
+    background-color: $grey-dark;
+    padding: 5px;
+    width: 20%;
+    text-align: center;
+    color: white;
+}
