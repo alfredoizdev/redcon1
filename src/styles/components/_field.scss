@@ -1,15 +1,33 @@
 .component_field-select{
-    border: 1px solid $grey-middle;
+    border: 1px solid #d0d0d0;
     background-color: $grey-lite;
     border-radius: 0;
     padding: .7rem;
+    width: 80%;
 }
 
-.component_filed-qty {
+.component_field-qty {
     width: 70px;
     margin: 2px;
     height: 38px;
     border-radius: 0;
-    border: 1px solid $grey-middle;
+    border: 1px solid #d0d0d0;
     background-color: $grey-lite;
+}
+
+.component_field-wrap {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 2px;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 300;
+
+    &.no-show {
+        display: none;
+    }
 }
