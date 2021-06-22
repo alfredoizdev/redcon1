@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Product from "modules/product/Product";
 import useRequest from "hooks/useRequest";
+import Loading from "components/loading/loading";
 
 const Products = () => {
   const { items, error, loading } = useRequest({
@@ -16,7 +17,7 @@ const Products = () => {
   return (
     <div className='row mt-4'>
       {loading ? (
-        <p>Loading...</p>
+        <Loading />
       ) : (
         items.map((item) => <Product item={item} key={item.id} />)
       )}

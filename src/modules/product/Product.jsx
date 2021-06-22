@@ -19,7 +19,7 @@ const Product = ({ item }) => {
   };
 
   return (
-    <div className='col-md-4'>
+    <div className='col-md-4 animate__animated animate__fadeIn'>
       <div className='component_card'>
         <div className='component_card-img-wrap'>
           {item.images?.length ? (
@@ -29,20 +29,26 @@ const Product = ({ item }) => {
           )}
           <Button
             variant='light'
-            className={`component_btn-variant ${show ? "no-show" : ""} shadow-sm`}
+            className={`component_btn-variant ${
+              show ? "no-show" : ""
+            } shadow-sm`}
             onClick={handleMouse}
           >
             <FontAwesomeIcon icon={faSlidersH} />
           </Button>
-          <div className={`component_field-wrap ${!show && "no-show"} shadow-sm`}>
+          <div
+            className={`component_field-wrap ${
+              !show && "no-show"
+            } shadow-sm animate__animated animate__flipInX`}
+          >
             <SelectField variants={item.variants} />
             <Button
-            variant='primary'
-            onClick={handleMouse}
-            className="component_btn-variant-close"
-          >
-            X
-          </Button>
+              variant='primary'
+              onClick={handleMouse}
+              className='component_btn-variant-close'
+            >
+              X
+            </Button>
           </div>
         </div>
         <div className='component_card-body'>
@@ -57,7 +63,7 @@ const Product = ({ item }) => {
           <div className='pt-3'>
             <CardItem title='More about' text={item.description} />
             <CardItem title='Objective' text={item.objective} />
-            <CardItem title='Suggested' text={item.suggested_use} />
+            <CardItem title='Suggested to use' text={item.suggested_use} />
           </div>
         </div>
       </div>
